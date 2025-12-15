@@ -1,3 +1,37 @@
-.logo{
-    
+.header {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 34px 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+}
+
+
+.navigationList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 40px; */
+}
+
+/* Home ↔ Nannies */
+.navigationItem + .navigationItem {
+  margin-left: 40px;
+}
+
+/* Відступ ДО auth-блоку */
+.authWrapper {
+  margin-left: 92px;
 }

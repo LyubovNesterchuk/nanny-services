@@ -1,24 +1,15 @@
-import './App.css'
+import Header from "./components/Header/Header";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
 
-function App() {
- 
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="#">
-          <img className="logo" alt="Nanny services logo" />
-        </a>
-        {/* <Home/>
-        <Nannies/> */}
-        <button> Log In </button>
-        <button> Registration </button>
-      </div>
-      <h1 className="hero-title">Make Life Easier for the Family:</h1>
-      <p className="title-description">Find Babysitters Online for All Occasions</p>
-      <button> Get started </button>
-    </>
-  )
-}
+      <Header />
 
-export default App
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
+  );
+}

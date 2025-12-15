@@ -1,0 +1,26 @@
+
+.authNavigation {
+  display: flex;
+  gap: 8px;
+}
+.navigationItem {
+  list-style: none;
+  gap: 8px;
+
+}
+
+.navigationLogin {
+border: 1px solid rgba(251, 251, 251, 0.4);
+border-radius: 30px;
+padding: 14px 39px;
+width: 124px;
+height: 48px;
+}
+
+.navigationRegistration {
+border-radius: 30px;
+padding: 14px 40px;
+width: 168px;
+height: 48px;
+background: #f03f3b;
+}
