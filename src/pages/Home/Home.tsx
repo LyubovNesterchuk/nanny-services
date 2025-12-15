@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <main className={styles.home}>
       <section className={styles.hero}>
+        
         {/* LEFT */}
         <div className={styles.left}>
           <h1 className={styles.title}>
