@@ -23,15 +23,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 40px; */
 }
 
-/* Home ↔ Nannies */
+
 .navigationItem + .navigationItem {
   margin-left: 40px;
 }
 
-/* Відступ ДО auth-блоку */
 .authWrapper {
   margin-left: 92px;
 }
+
+/*  */
+.red {
+  background-color: #f03f3b;
+}
+.navLink {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+}
+.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
