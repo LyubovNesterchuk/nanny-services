@@ -1,14 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation} from "react-router-dom";
 import css from "./AuthNavigation.module.css";
 import { useAuth } from "../../hooks/useAuth";
 
 export default function AuthNavigation() {
   const { user, loading, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     await logout();
-    navigate("/sign-in");
+    navigate("/");
   };
 
   if (loading) return null;
@@ -25,10 +26,7 @@ export default function AuthNavigation() {
 
           <li className={css.navigationItem}>
             <p className={css.userEmail}>{user.email}</p>
-            <button
-              className={css.logoutButton}
-              onClick={handleLogout}
-            >
+            <button className={css.logoutButton} onClick={handleLogout}>
               Logout
             </button>
           </li>
@@ -36,21 +34,30 @@ export default function AuthNavigation() {
       ) : (
         <>
           <li className={css.navigationItem}>
-            <Link to="/sign-in" className={css.navigationLogin}>
+            <NavLink 
+              to="/sign-in"
+              state={{ background: location }}
+              className={css.navigationLogin}
+            >
               Log In
-            </Link>
+            </NavLink>
           </li>
 
           <li className={css.navigationItem}>
-            <Link
+            <NavLink
               to="/sign-up"
+              state={{ background: location }}
               className={css.navigationRegistration}
             >
               Registration
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
     </ul>
   );
 }
+
+
+
+

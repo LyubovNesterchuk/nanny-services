@@ -15,16 +15,18 @@ export default function Header() {
     location.pathname.startsWith("/favorites");
 
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive ? `${css.navLink} ${css.active}` : css.navLink;
+    !isHomePage && isActive ? `${css.navLink} ${css.active}` : css.navLink;
 
   return (
     <header className={`${css.header} ${isRedHeader ? css.red : ""}`}>
       <div className={css.container}>
+
          <Link to="/" aria-label="Home" className={css.logo}>
              <img src="logo.svg" alt="Nanny Services logo" />
          </Link>
         <nav>
           <ul className={css.navigationList}>
+
             <li className={css.navigationItem}>
               <NavLink to="/" end className={getNavLinkClass}>
                 Home
@@ -42,12 +44,14 @@ export default function Header() {
                 <NavLink to="/favorites" className={getNavLinkClass}>
                   Favorites
                 </NavLink>
+
               </li>
             )}
 
             <li className={css.authWrapper}>
               <AuthNavigation />
             </li>
+
           </ul>
         </nav>
       </div>

@@ -22,5 +22,136 @@ border-radius: 30px;
 padding: 14px 40px;
 width: 168px;
 height: 48px;
-background: #f03f3b;
+background-color: #f03f3b;
+border: 1px solid #f03f3b;
+}
+
+.navigationLogin,
+.navigationRegistration {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.navigationLogin:hover,
+.navigationLogin:focus {
+  border-color: #E0A39A;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.navigationRegistration:hover,
+.navigationRegistration:focus {
+  background-color: transparent;
+  border-color: rgba(251, 251, 251, 0.4);
+  box-shadow: 0 6px 14px rgba(240, 63, 59, 0.25);
+  transform: translateY(-1px);
+}
+
+
+/* 
+.authNavigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigationItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.navigationLink {
+ 
+  font-size: 16px;
+  font-weight: 500;
+  color: #191919;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navigationLink:hover {
+  color: #f03f3b;
+}
+
+.userEmail {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #191919;
+}
+
+.navigationLogin {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 14px 39px;
+  min-width: 124px;
+  height: 48px;
+  background: transparent;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navigationRegistration {
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 168px;
+  height: 48px;
+  background-color: #f03f3b;
+  border: 1px solid #f03f3b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navigationLogin,
+.navigationRegistration {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease,
+    color 0.25s ease;
+}
+
+.navigationLogin:hover,
+.navigationLogin:focus {
+  border-color: #E0A39A;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.navigationRegistration:hover,
+.navigationRegistration:focus {
+  background-color: transparent;
+  border-color: rgba(251, 251, 251, 0.4);
+  box-shadow: 0 6px 14px rgba(240, 63, 59, 0.25);
+  transform: translateY(-1px);
+} */
+
+.logoutButton {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #191919;
+  background: transparent;
+  border: 1px solid rgba(25, 25, 25, 0.2);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logoutButton:hover {
+  border-color: #f03f3b;
+  color: #f03f3b;
 }
