@@ -6,6 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
 import sprite from "/sprite.svg";
+import { useState } from 'react';
 
 const schema = yup.object({
   name: yup
@@ -47,11 +48,11 @@ export default function RegistrationForm({
   });
 
   const onSubmit = async (data: RegistrationFormData) => {
-    try {
-      await registerUser(data.email, data.password);
-      toast.success('Registration successful! Welcome to Nanny.Services!');
-      onClose();
-    } catch (error) {
+  try {
+    await registerUser(data.email, data.password, data.name);
+    toast.success('Registration successful! Welcome to Nanny.Services!');
+    onClose();
+  } catch (error) {
       let errorMessage = 'Registration error';
 
       if (error && typeof error === 'object' && 'code' in error) {
@@ -69,6 +70,8 @@ export default function RegistrationForm({
       toast.error(errorMessage);
     }
   };
+
+const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className={css.container}>
@@ -116,13 +119,35 @@ export default function RegistrationForm({
         </div>
 
         <div className={css.formGroup}>
-          <input
-            {...register('password')}
-            type="password"
-            placeholder="Password"
-            className={css.input}
-            maxLength={128}
-          />
+          <div className={css.passwordWrapper}>
+            <input
+              {...register('password')}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              className={css.input}
+            />
+
+            <button
+              type="button"
+              className={css.passwordToggle}
+              onClick={() => setShowPassword(prev => !prev)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+              <svg
+                className={css.iconClose}
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <use
+                  href={`${sprite}#${
+                    showPassword ? 'icon-eye' : 'icon-eye-off'
+                  }`}
+                />
+              </svg>
+            </button>
+          </div>
+
           {errors.password && (
             <span className={css.errorText}>{errors.password.message}</span>
           )}

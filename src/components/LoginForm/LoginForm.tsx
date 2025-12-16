@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import css from './LoginForm.module.css';
+import sprite from "/sprite.svg";
+
 
 const schema = yup.object({
   email: yup
@@ -62,16 +64,18 @@ export default function LoginForm({
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className={css.container}>
       <button className={css.closeButton} onClick={onClose} aria-label="Close">
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path
-            d="M18 6L6 18M6 6l12 12"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+        <svg
+              className={css.iconClose}
+              width="32"
+              height="32"
+              aria-hidden="true"
+            >
+              <use href={`${sprite}#icon-close`} />
         </svg>
       </button>
 
@@ -95,12 +99,35 @@ export default function LoginForm({
         </div>
 
         <div className={css.formGroup}>
-          <input
-            {...register('password')}
-            type="password"
-            placeholder="Password"
-            className={css.input}
-          />
+          <div className={css.passwordWrapper}>
+            <input
+              {...register('password')}
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              className={css.input}
+            />
+
+            <button
+              type="button"
+              className={css.passwordToggle}
+              onClick={() => setShowPassword(prev => !prev)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+            >
+              <svg
+                className={css.iconClose}
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <use
+                  href={`${sprite}#${
+                    showPassword ? 'icon-eye' : 'icon-eye-off'
+                  }`}
+                />
+              </svg>
+            </button>
+          </div>
+
           {errors.password && (
             <span className={css.errorText}>{errors.password.message}</span>
           )}
@@ -115,12 +142,6 @@ export default function LoginForm({
         </button>
       </form>
 
-      <p className={css.switchText}>
-        Don't have an account?{' '}
-        <Link to="/sign-up" className={css.switchButton}>
-          Register
-        </Link>
-      </p>
     </div>
   );
 }

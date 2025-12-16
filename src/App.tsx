@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 
@@ -18,6 +19,13 @@ export default function App() {
 
   return (
     <>
+      <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 5000,
+          }}
+        />
+        
       <Header />
 
       <Routes location={state?.background || location}>

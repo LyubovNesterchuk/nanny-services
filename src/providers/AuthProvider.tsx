@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updateProfile, createUserWithEmailAndPassword } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { auth } from "../services/firebase";
 import {
   loginUser,
-  registerUser,
   logoutUser,
 } from "../services/auth.service";
 import { AuthContext } from "./auth.context";
@@ -26,8 +25,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     await loginUser(email, password);
   };
 
-  const register = async (email: string, password: string) => {
-    await registerUser(email, password);
+  const register = async (
+    email: string,
+    password: string,
+    name: string
+  ) => {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+
+    await updateProfile(result.user, {
+      displayName: name,
+    });
+
+    setUser({
+      ...result.user,
+      displayName: name,
+    });
   };
 
   const logout = async () => {

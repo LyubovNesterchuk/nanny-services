@@ -90,6 +90,21 @@
   color: #f03f3b;
 }
 
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .submitButton {
   width: 100%;
   padding: 16px;
