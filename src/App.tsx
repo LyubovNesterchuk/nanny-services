@@ -1,8 +1,9 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
+
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
-
+import Nannies from "./pages/Nannies/Nannies";
 import Modal from "./components/Modal/Modal";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
@@ -30,6 +31,7 @@ export default function App() {
 
       <Routes location={state?.background || location}>
         <Route path="/" element={<Home />} />
+        <Route path="/nannies" element={<Nannies />} />
       </Routes>
 
       
@@ -52,11 +54,10 @@ export default function App() {
               </Modal>
             }
           />
+
         </Routes>
       )}
     </>
   );
 }
-
-
 

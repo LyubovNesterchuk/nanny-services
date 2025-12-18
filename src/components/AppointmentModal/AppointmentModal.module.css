@@ -1,0 +1,174 @@
+.wrapper {
+  padding: 64px;
+  position: relative;
+  max-width: 600px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.closeIcon {
+  stroke: #11101c;
+}
+
+
+.title {
+  font-family: var(--font-family);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: #11101c;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(17, 16, 28, 0.5);
+  margin-bottom: 24px;
+}
+
+
+.nannyInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.avatarWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textName {
+  display: flex;
+  flex-direction: column;
+}
+
+.nannyLabel {
+  font-size: 12px;
+  color: rgba(17, 16, 28, 0.5);
+}
+
+.nannyName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #11101c;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  font-size: 16px;
+  color: #11101c;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: rgba(17, 16, 28, 0.5);
+}
+
+.inputError {
+  border-color: #f43f5e !important;
+}
+
+.error {
+  color: #f43f5e;
+  font-size: 12px;
+}
+
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+}
+
+.phonePrefix {
+  margin-right: 8px;
+  color: rgba(17, 16, 28, 0.5);
+}
+
+
+.timeInputWrapper {
+  position: relative;
+}
+
+.clockIcon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+.submitBtn {
+  margin-top: 26px;
+  width: 100%;
+  height: 52px;
+  background-color: #f03f3b;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 40px 20px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+}

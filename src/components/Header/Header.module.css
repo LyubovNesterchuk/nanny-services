@@ -1,9 +1,17 @@
 .header {
+  width: 100%;
+  z-index: 10;
+}
+
+.homeHeader {
   position: absolute;
   top: 32px;
   left: 0;
-  width: 100%;
-  z-index: 10;
+}
+
+.defaultHeader {
+  position: static;
+  background: #f03f3b;
 }
 
 .container {
@@ -16,7 +24,6 @@
   align-items: center;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
 }
-
 
 .navigationList {
   display: flex;

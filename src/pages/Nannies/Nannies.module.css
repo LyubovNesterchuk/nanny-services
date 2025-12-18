@@ -1,0 +1,47 @@
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 128px 100px; 
+  background-color: #fbfbfb;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 24px;
+}
+
+.item {
+  margin-bottom: 32px;
+}
+
+.item:last-child {
+  margin-bottom: 64px;
+}
+
+.loadMore {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f03f3b;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.loadMore:hover {
+  background-color: #d73733;
+  transform: translateY(-1px);
+}
+
+.loadMore:disabled {
+  background-color: #f6b3b1;
+  cursor: not-allowed;
+  transform: none;
+}
