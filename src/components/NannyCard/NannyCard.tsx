@@ -10,9 +10,10 @@ import { auth } from "../../services/firebase";
 
 type Props = {
   nanny: Nanny;
- };
+  onMakeAppointment: (nanny: Nanny) => void;
+};
 
-export default function NannyCard({ nanny }: Props) {
+export default function NannyCard ({ nanny, onMakeAppointment }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [isFav, setIsFav] = useState(false);
   const [favLoading, setFavLoading] = useState(false);
@@ -171,7 +172,9 @@ export default function NannyCard({ nanny }: Props) {
              
               <button
                 type="button"
-                className={styles.appointment}>
+                className={styles.appointment}
+                onClick={() => onMakeAppointment(nanny)}
+              >
                 Make an appointment
               </button>
        

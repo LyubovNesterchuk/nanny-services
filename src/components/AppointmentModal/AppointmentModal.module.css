@@ -1,43 +1,51 @@
 .wrapper {
-  padding: 64px;
   position: relative;
   max-width: 600px;
+  padding: 64px;
 }
 
 .closeBtn {
   position: absolute;
   top: 20px;
   right: 20px;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
-  width: 32px;
-  height: 32px;
 }
 
 .closeIcon {
-  stroke: #11101c;
+  fill: none;
+  stroke: #191919;
+  transition: stroke 0.25s ease;
 }
 
+.closeBtn:hover .closeIcon,
+.closeBtn:focus .closeIcon {
+  stroke: #f03f3b;
+}
 
 .title {
-  font-family: var(--font-family);
+  margin-bottom: 20px;
+
   font-size: 40px;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 20px;
   color: #11101c;
 }
 
 .description {
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgba(17, 16, 28, 0.5);
-  margin-bottom: 24px;
-}
+  margin-bottom: 40px;
 
+  font-size: 16px;
+  line-height: 1.3;
+  color: rgba(17, 16, 28, 0.5);
+}
 
 .nannyInfo {
   display: flex;
@@ -47,9 +55,9 @@
 }
 
 .avatarWrapper {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
   overflow: hidden;
 }
 
@@ -65,8 +73,11 @@
 }
 
 .nannyLabel {
+  margin-bottom: 4px;
+
   font-size: 12px;
-  color: rgba(17, 16, 28, 0.5);
+  font-weight: 500;
+  color: #8a8a89;
 }
 
 .nannyName {
@@ -75,10 +86,11 @@
   color: #11101c;
 }
 
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .row {
@@ -97,10 +109,24 @@
 .form textarea {
   width: 100%;
   padding: 16px;
-  border: 1px solid rgba(17, 16, 28, 0.1);
-  border-radius: 12px;
+
+  font-family: inherit;
   font-size: 16px;
+  line-height: 1.3;
   color: #11101c;
+
+  background-color: #fff;
+  border: 1px solid rgba(17, 16, 28, 0.08);
+  border-radius: 12px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form textarea {
+  resize: none;
 }
 
 .form input::placeholder,
@@ -108,56 +134,85 @@
   color: rgba(17, 16, 28, 0.5);
 }
 
-.inputError {
-  border-color: #f43f5e !important;
+.form input:focus,
+.form textarea:focus {
+  border-color: rgba(17, 16, 28, 0.16);
+  box-shadow: 0 0 0 1px rgba(17, 16, 28, 0.04);
 }
 
-.error {
-  color: #f43f5e;
-  font-size: 12px;
+.inputError {
+  border-color: #f03f3b;
+  box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.15);
+}
+
+.inputError:focus {
+  border-color: #f03f3b;
+  box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.25);
 }
 
 .phoneWrapper {
   display: flex;
   align-items: center;
   padding: 0 16px;
-  border: 1px solid rgba(17, 16, 28, 0.1);
+
+  border: 1px solid rgba(17, 16, 28, 0.08);
   border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.phonePrefix {
-  margin-right: 8px;
-  color: rgba(17, 16, 28, 0.5);
+.phoneWrapper input {
+  padding: 16px 0;
+  border: none;
 }
 
+.phoneWrapper:focus-within {
+  border-color: rgba(17, 16, 28, 0.16);
+  box-shadow: 0 0 0 1px rgba(17, 16, 28, 0.04);
+}
+
+.phoneWrapper.inputError {
+  border-color: #f03f3b;
+  box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.15);
+}
 
 .timeInputWrapper {
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
-.clockIcon {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+.error {
+  font-size: 12px;
+  color: #f03f3b;
 }
-
 
 .submitBtn {
   margin-top: 26px;
   width: 100%;
   height: 52px;
+
   background-color: #f03f3b;
+  border: none;
   border-radius: 30px;
-  color: #fff;
+
   font-size: 16px;
   font-weight: 500;
-  border: none;
+  color: #fff;
+
   cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* Responsive */
+.submitBtn:hover,
+.submitBtn:focus {
+  background-color: #d73733;
+  box-shadow: 0 6px 14px rgba(204, 52, 49, 0.25);
+}
+
 
 @media (max-width: 768px) {
   .wrapper {

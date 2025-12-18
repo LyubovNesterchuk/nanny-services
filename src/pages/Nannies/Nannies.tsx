@@ -86,41 +86,39 @@ useEffect(() => {
 }, [initialized, loadMore]);
 
   return (
-  <section className={styles.page}>
+    <section className={styles.page}>
  
       <Filters value={filter} onChange={setFilter} />
       
+      <ul className={styles.list}>
+        {filteredNannies.map(nanny => (
+          <li key={nanny.id} className={styles.item}>
+            <NannyCard nanny={nanny} onMakeAppointment={setSelectedNanny}/>
+          </li>
+        ))}
+      </ul>
 
-    <ul className={styles.list}>
-      {filteredNannies.map(nanny => (
-        <li key={nanny.id} className={styles.item}>
-          <NannyCard nanny={nanny} />
-        </li>
-      ))}
-    </ul>
-
-    {hasMore && (
-      <button
-        type="button"
-        className={styles.loadMore}
-        onClick={loadMore}
-        disabled={loading}
-      >
-        {loading ? "Loading..." : "Load more"}
-      </button>
-    )}
+      {hasMore && (
+        <button
+          type="button"
+          className={styles.loadMore}
+          onClick={loadMore}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Load more"}
+        </button>
+      )}
 
 
-    {selectedNanny && (
-  <Modal onClose={() => setSelectedNanny(null)}>
-    <AppointmentModal
-      nanny={selectedNanny}
-      onClose={() => setSelectedNanny(null)}
-    />
-  </Modal>
-)}
+      {selectedNanny && (
+        <Modal onClose={() => setSelectedNanny(null)}>
+          <AppointmentModal
+            nanny={selectedNanny}
+            onClose={() => setSelectedNanny(null)}
+          />
+        </Modal>
+      )}
 
-  </section>
-);
-
+    </section>
+  );
 }
