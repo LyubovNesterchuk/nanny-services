@@ -265,7 +265,7 @@
 
    transition:
     background-color 0.25s ease,
-    box-shadow 0.25s ease,
+    box-shadow 0.25s ease;
  }
 
   .appointment:hover,
@@ -273,3 +273,4 @@
     background-color: #d73733;
     box-shadow: 0 6px 14px rgba(204, 52, 49, 0.25);
   }
+

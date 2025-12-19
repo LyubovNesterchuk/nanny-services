@@ -1,7 +1,10 @@
 .wrapper {
   position: relative;
+  width: 100%;
+  max-width: 600px;
   max-width: 600px;
   padding: 64px;
+  background-color: #fbfbfb;
 }
 
 .closeBtn {
@@ -131,7 +134,10 @@
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: rgba(17, 16, 28, 0.5);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #11101c;
 }
 
 .form input:focus,
@@ -145,43 +151,6 @@
   box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.15);
 }
 
-.inputError:focus {
-  border-color: #f03f3b;
-  box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.25);
-}
-
-.phoneWrapper {
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-
-  border: 1px solid rgba(17, 16, 28, 0.08);
-  border-radius: 12px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.phoneWrapper input {
-  padding: 16px 0;
-  border: none;
-}
-
-.phoneWrapper:focus-within {
-  border-color: rgba(17, 16, 28, 0.16);
-  box-shadow: 0 0 0 1px rgba(17, 16, 28, 0.04);
-}
-
-.phoneWrapper.inputError {
-  border-color: #f03f3b;
-  box-shadow: 0 0 0 1px rgba(240, 63, 59, 0.15);
-}
-
-.timeInputWrapper {
-  display: flex;
-  flex-direction: column;
-}
 
 .error {
   font-size: 12px;

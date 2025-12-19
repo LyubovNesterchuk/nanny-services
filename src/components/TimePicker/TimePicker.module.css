@@ -5,8 +5,8 @@
 
 .title {
   text-align: center;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: #121417;
   margin-bottom: 12px;
 }
@@ -23,7 +23,6 @@
   align-items: center;
   justify-content: space-between;
 
-  cursor: pointer;
 }
 
 .value {
@@ -37,27 +36,26 @@
   stroke: #121417;
 }
 
-.error {
-  border-color: #e74a3b;
-}
 
-.errorText {
+/* .errorText {
   margin-top: 6px;
   font-size: 12px;
   color: #e74a3b;
-}
+} */
 
 .dropdown {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
   width: 100%;
+  max-width: 151px;
+  min-height: 180px;
   z-index: 10;
-
+  
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 12px 0;
+  padding: 16px;
 }
 
 .list {
@@ -65,7 +63,7 @@
   margin: 0;
   padding: 0;
 
-  max-height: 200px;
+  max-height: 180px;
   overflow-y: auto;
   scrollbar-width: thin;         
   scrollbar-color: #cfcfcf transparent;
@@ -86,21 +84,16 @@
 
 .option {
   width: 100%;
-  padding: 8px 0;
   background: none;
   border: none;
 
-  font-size: 18px;
   font-weight: 500;
-  color: #b6b6b6;
-
-  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: center;
+  color: rgba(17, 16, 28, 0.3);
 }
 
 .option:hover {
-  color: #121417;
-}
-
-.active {
-  color: #121417;
+  color: #11101c;
 }

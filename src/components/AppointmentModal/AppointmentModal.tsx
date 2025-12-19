@@ -6,7 +6,6 @@ import type { Nanny } from "../../types/nanny";
 import css from "./AppointmentModal.module.css";
 import sprite from "/sprite.svg";
 import { Controller } from "react-hook-form";
-// import clsx from "clsx";
 
 import { toast } from "react-hot-toast";
 
@@ -36,11 +35,11 @@ const schema = yup.object({
   phone: yup
     .string()
     .required("Phone is required")
-    .matches(/^\+380\d{9}$/, "Phone must be +380XXXXXXXXX"),
+    .matches(/^\+?\d[\d\s()-]{8,14}$/,
+      "Phone number is invalid"),
   childAge: yup
     .string()
-    .required("Child's age is required")
-    .matches(/^\d+$/, "Age must be a number"),
+    .required("Child's age is required"),
   meetingTime: yup.string().required("Meeting time is required"),
   email: yup
     .string()
@@ -68,7 +67,6 @@ export default function AppointmentModal({
     reset,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
-    // mode: "onChange",
     mode: "onBlur",
   });
 
@@ -137,18 +135,6 @@ export default function AppointmentModal({
               <p className={css.error}>{errors.address.message}</p>
             )}
           </div>
-{/* <div className={css.inputWrapper}>
-  <input
-    {...register("address")}
-    placeholder="Address"
-    className={clsx(css.input, {
-      [css.inputError]: errors.address && touchedFields.address,
-    })}
-  />
-  {errors.address && touchedFields.address && (
-    <p className={css.error}>{errors.address.message}</p>
-  )}
-</div> */}
           
             <div className={css.inputWrapper}>
               <input
@@ -174,12 +160,11 @@ export default function AppointmentModal({
           </div>
 
           <div className={css.inputWrapper}>
-            <div className={css.timeInputWrapper}>
-              <Controller
+              <Controller  
                   name="meetingTime"
                   control={control}
                   render={({ field }) => (
-                    <TimePicker
+                    <TimePicker 
                       value={field.value}
                       onChange={field.onChange}
                       options={timeOptions}
@@ -187,11 +172,11 @@ export default function AppointmentModal({
                     />
                   )}
                 />
-            </div>
-            {errors.meetingTime && (
+                {errors.meetingTime && (
               <p className={css.error}>{errors.meetingTime.message}</p>
             )}
           </div>
+            
         </div>
 
         <div className={css.inputWrapper}>
