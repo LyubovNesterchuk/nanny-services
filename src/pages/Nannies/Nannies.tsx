@@ -21,32 +21,32 @@ export default function Nannies() {
   const [selectedNanny, setSelectedNanny] = useState<Nanny | null>(null);
 
 
-const filteredNannies = useMemo(() => {
-  const data = [...nannies];
+  const filteredNannies = useMemo(() => {
+    const data = [...nannies];
 
-  switch (filter) {
-    case "A to Z":
-      return data.sort((a, b) => a.name.localeCompare(b.name));
+    switch (filter) {
+      case "A to Z":
+        return data.sort((a, b) => a.name.localeCompare(b.name));
 
-    case "Z to A":
-      return data.sort((a, b) => b.name.localeCompare(a.name));
+      case "Z to A":
+        return data.sort((a, b) => b.name.localeCompare(a.name));
 
-    case "Less than 10$":
-      return data.filter(n => n.price_per_hour < 10);
+      case "Less than 10$":
+        return data.filter(n => n.price_per_hour < 10);
 
-    case "Greater than 10$":
-      return data.filter(n => n.price_per_hour >= 10);
+      case "Greater than 10$":
+        return data.filter(n => n.price_per_hour >= 10);
 
-    case "Popular":
-      return data.sort((a, b) => b.rating - a.rating);
+      case "Popular":
+        return data.sort((a, b) => b.rating - a.rating);
 
-    case "Not popular":
-      return data.sort((a, b) => a.rating - b.rating);
+      case "Not popular":
+        return data.sort((a, b) => a.rating - b.rating);
 
-    default:
-      return data;
-  }
-}, [nannies, filter]);
+      default:
+        return data;
+    }
+  }, [nannies, filter]);
 
   
   const loadMore = useCallback(async () => {
@@ -77,13 +77,13 @@ const filteredNannies = useMemo(() => {
   }, [lastKey, loading, hasMore]);
 
 
-const [initialized, setInitialized] = useState(false);
+  const [initialized, setInitialized] = useState(false);
 
-useEffect(() => {
-  if (initialized) return;
-  setInitialized(true);
-  loadMore();
-}, [initialized, loadMore]);
+  useEffect(() => {
+    if (initialized) return;
+    setInitialized(true);
+    loadMore();
+  }, [initialized, loadMore]);
 
   return (
     <section className={styles.page}>

@@ -11,9 +11,15 @@ import { auth } from "../../services/firebase";
 type Props = {
   nanny: Nanny;
   onMakeAppointment: (nanny: Nanny) => void;
+  onFavoriteRemoved?: (id: string) => void; 
 };
 
-export default function NannyCard ({ nanny, onMakeAppointment }: Props) {
+export default function NannyCard({
+  nanny,
+  onMakeAppointment,
+  onFavoriteRemoved,
+}: Props) {
+  
   const [expanded, setExpanded] = useState(false);
   const [isFav, setIsFav] = useState(false);
   const [favLoading, setFavLoading] = useState(false);
@@ -23,29 +29,31 @@ export default function NannyCard ({ nanny, onMakeAppointment }: Props) {
   }, [nanny.id]);
 
   const handleFavorite = async () => {
-    if (!auth.currentUser) {
-      toast.error(
-        "This feature is available only for authorized users"
-      );
-      return;
+  if (!auth.currentUser) {
+    toast.error("This feature is available only for authorized users");
+    return;
+  }
+
+  if (favLoading) return;
+
+  try {
+    setFavLoading(true);
+    const result = await toggleFavorite(nanny.id);
+    setIsFav(result);
+
+    if (!result && onFavoriteRemoved) {
+      onFavoriteRemoved(nanny.id); 
     }
 
-    if (favLoading) return;
-
-    try {
-      setFavLoading(true);
-      const result = await toggleFavorite(nanny.id);
-      setIsFav(result);
-
-      toast.success(
-        result ? "Added to favorites" : "Removed from favorites"
-      );
-    } catch {
-      toast.error("Something went wrong");
-    } finally {
-      setFavLoading(false);
-    }
-  };
+    toast.success(
+      result ? "Added to favorites" : "Removed from favorites"
+    );
+  } catch {
+    toast.error("Something went wrong");
+  } finally {
+    setFavLoading(false);
+  }
+};
 
   return (
     <article className={styles.card}>
@@ -142,6 +150,7 @@ export default function NannyCard ({ nanny, onMakeAppointment }: Props) {
             <ul className={styles.comments}>
               {nanny.reviews.map((review) => (
                 <li key={`${review.reviewer}-${review.rating}`} className={styles.comment}>
+                  
                   <div className={styles.reviewHeader}>
 
                     <div className={styles.avatarReviewer}>
@@ -157,7 +166,7 @@ export default function NannyCard ({ nanny, onMakeAppointment }: Props) {
                           aria-hidden="true">
                             <use href="/sprite.svg#icon-star-fill" />
                         </svg> 
-                        {review.rating}
+                        {review.rating.toFixed(1)}
                       </p>
                     </div>
 

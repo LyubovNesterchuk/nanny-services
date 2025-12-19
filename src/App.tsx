@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Nannies from "./pages/Nannies/Nannies";
+import Favorites from "./pages/Favorites/Favorites";
 import Modal from "./components/Modal/Modal";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
@@ -32,6 +33,7 @@ export default function App() {
       <Routes location={state?.background || location}>
         <Route path="/" element={<Home />} />
         <Route path="/nannies" element={<Nannies />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
 
       

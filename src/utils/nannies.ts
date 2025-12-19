@@ -11,10 +11,15 @@ import type { Nanny } from "../types/nanny";
 
 const PAGE_SIZE = 3;
 
-export const fetchNannies = async (lastKey?: string) => {
+export const fetchNannies = async (
+  lastKey?: string,
+  fetchAll: boolean = false
+) => {
   const baseRef = ref(db, "nannies");
 
-  const q = lastKey
+  const q = fetchAll
+    ? query(baseRef, orderByKey())
+    : lastKey
     ? query(
         baseRef,
         orderByKey(),
@@ -30,7 +35,6 @@ export const fetchNannies = async (lastKey?: string) => {
   }
 
   const data = snapshot.val();
-
   const entries = Object.entries(data) as [string, Omit<Nanny, "id">][];
 
   const items: Nanny[] = entries.map(([id, value]) => ({
@@ -38,14 +42,13 @@ export const fetchNannies = async (lastKey?: string) => {
     ...value,
   }));
 
-  const newLastKey = entries[entries.length - 1][0];
+  const newLastKey = fetchAll
+    ? null
+    : entries[entries.length - 1][0];
 
   return {
     items,
     lastKey: newLastKey,
   };
 };
-
-
-
 

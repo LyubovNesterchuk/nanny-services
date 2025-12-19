@@ -5,10 +5,11 @@ import * as yup from "yup";
 import type { Nanny } from "../../types/nanny";
 import css from "./AppointmentModal.module.css";
 import sprite from "/sprite.svg";
+import { Controller } from "react-hook-form";
+// import clsx from "clsx";
 
 import { toast } from "react-hot-toast";
 
-import { Controller } from "react-hook-form";
 import TimePicker from "../TimePicker/TimePicker";
 import { generateTimeOptions } from "../../utils/generateTimeOptions";
 
@@ -29,23 +30,31 @@ interface FormValues {
 }
 
 const schema = yup.object({
-  address: yup.string().required("Address is required"),
+  address: yup
+  .string()
+  .required("Address is required"),
   phone: yup
     .string()
     .required("Phone is required")
-    .matches(/^\d{9}$/, "Phone must contain 9 digits"),
+    .matches(/^\+380\d{9}$/, "Phone must be +380XXXXXXXXX"),
   childAge: yup
     .string()
     .required("Child's age is required")
     .matches(/^\d+$/, "Age must be a number"),
   meetingTime: yup.string().required("Meeting time is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
+  email: yup
+    .string()
+    .email("Invalid email")
+    .required("Email is required"),
   parentName: yup
     .string()
     .required("Parent name is required")
     .min(2, "Name must be at least 2 characters"),
-  comment: yup.string().required("Comment is required"),
+  comment: yup
+    .string()
+    .required("Comment is required"),
 });
+
 
 export default function AppointmentModal({
   onClose,
@@ -59,13 +68,13 @@ export default function AppointmentModal({
     reset,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
-    mode: "onChange",
+    // mode: "onChange",
+    mode: "onBlur",
   });
 
   const onSubmit = (data: FormValues) => {
     const finalData = {
       ...data,
-      phone: `+380${data.phone}`,
       nannyId: nanny.id,
     };
 
@@ -128,7 +137,18 @@ export default function AppointmentModal({
               <p className={css.error}>{errors.address.message}</p>
             )}
           </div>
-
+{/* <div className={css.inputWrapper}>
+  <input
+    {...register("address")}
+    placeholder="Address"
+    className={clsx(css.input, {
+      [css.inputError]: errors.address && touchedFields.address,
+    })}
+  />
+  {errors.address && touchedFields.address && (
+    <p className={css.error}>{errors.address.message}</p>
+  )}
+</div> */}
           
             <div className={css.inputWrapper}>
               <input
