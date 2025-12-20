@@ -6,7 +6,7 @@ import type { Nanny } from "../../types/nanny";
 import { getAge } from "../../utils/formatDate";
 import { isFavorite, toggleFavorite } from "../../utils/favorites";
 import { auth } from "../../services/firebase";
-
+import sprite from "/sprite.svg";
 
 type Props = {
   nanny: Nanny;
@@ -83,7 +83,7 @@ export default function NannyCard({
                 width="16"
                 height="16"
                 aria-hidden="true">
-                  <use href="/sprite.svg#icon-map-pin" />
+                  <use href={`${sprite}#icon-map-pin`} />
                 </svg>
                 {nanny.location} 
               </p>
@@ -93,7 +93,7 @@ export default function NannyCard({
                 width="16"
                 height="16"
                 aria-hidden="true">
-                  <use href="/sprite.svg#icon-star-fill" />
+                  <use href={`${sprite}#icon-star-fill`} />
                 </svg>
                 Rating: {nanny.rating} 
               </p>
@@ -117,7 +117,7 @@ export default function NannyCard({
                     aria-hidden="true"
                   >
                     <use
-                      href={`/sprite.svg#${
+                      href={`${sprite}#${
                         isFav ? "icon-heart-red" : "icon-heart"
                       }`}
                     />
@@ -164,7 +164,7 @@ export default function NannyCard({
                           width="16"
                           height="16"
                           aria-hidden="true">
-                            <use href="/sprite.svg#icon-star-fill" />
+                            <use href={`${sprite}#icon-star-fill`} />
                         </svg> 
                         {review.rating.toFixed(1)}
                       </p>

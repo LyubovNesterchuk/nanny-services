@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
@@ -20,7 +19,7 @@ const schema = yup.object({
   password: yup
     .string()
     .min(8, 'Password must be at least 8 characters')
-    .max(128, 'Password must not exceed 128 characters')
+    .max(28, 'Password must not exceed 128 characters')
     .required('Please enter a password'),
 });
 
@@ -162,12 +161,6 @@ const [showPassword, setShowPassword] = useState(false);
         </button>
       </form>
 
-      <p className={css.switchText}>
-        Already have an account?{' '}
-        <Link to="/sign-in" className={css.switchButton}>
-          Log In
-        </Link>
-      </p>
     </div>
   );
 }
