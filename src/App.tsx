@@ -8,6 +8,7 @@ import Favorites from "./pages/Favorites/Favorites";
 import Modal from "./components/Modal/Modal";
 import LoginForm from "./components/LoginForm/LoginForm";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+import NotFound from "./pages/NotFound/NotFound";
 
 export default function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/nannies" element={<Nannies />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       
